@@ -1,0 +1,62 @@
+@import 'base_view';
+
+body {
+	background-color: #fff;
+	padding-top: 50px;
+}
+
+.loading-indicator {
+	display:none;
+	float:right;
+	color:#fff;
+	line-height:40px;
+}
+
+body.loading .loading-indicator {
+	display:block;
+}
+
+
+
+.dry_collage_view {
+	position: relative;
+	display: inline-block;
+
+	div.cta {
+		position:absolute;
+		top:2px;
+		right:2px;
+	}
+}
+
+.collage_show_view {
+	text-align:center;
+
+	.dry_collage_view {
+		a > img {
+			pointer-events:none;
+		}
+		div.meta {
+			display:none;
+		}
+	}
+}
+
+
+.topic_index_view li {
+	padding-bottom: 2em;
+
+	.dry_collage_view {
+		border:1px solid #CCC;
+		width:298px;
+
+		div.meta {
+			border-top:1px dotted #CCC;
+			line-height: 3;
+			white-space: nowrap;
+			overflow:hidden;
+			text-align:center;
+			text-overflow:ellipsis;
+		}
+	}
+}

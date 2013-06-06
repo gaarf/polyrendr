@@ -1,0 +1,14 @@
+<h1>Welcome!</h1>
+
+
+<p>This is a little app that demonstrates Rendr.</p>
+<p>Check out <a href="/topic">Popular Fashion</a>.</p>
+
+
+{{#if _session}}
+	<hr>
+	<p>Your session was created on {{_session.created}}.</p>
+	<p>Your last request for the home was on {{_session.homeload}}.</p>
+{{/if}}
+
+
