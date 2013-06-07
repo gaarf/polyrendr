@@ -1,9 +1,7 @@
-# Rendr App Template
-## GitHub Browser
+# PolyRendr
+## a Polyvore Prototype
 
 The purpose of this little app is to demonstrate one way of using Rendr to build a web app that runs on both the client and the server.
-
-![Screenshot](http://cl.ly/image/062d3S2D1Y38/Screen%20Shot%202013-04-09%20at%203.14.31%20PM.png)
 
 ## Running the example
 
@@ -17,8 +15,8 @@ If you see an error on startup that looks [like this](https://github.com/airbnb/
 
 Clone this repo to a local directory and run `npm install` to install dependencies:
 
-    $ git clone git@github.com:airbnb/rendr-app-template.git
-    $ cd rendr-app-template
+    $ git clone git@github.com:gaarf/polyrendr.git
+    $ cd polyrendr
     $ npm install
 
 Then, use `grunt server` to start up the web server. Grunt will recompile and restart the server when files change.
@@ -31,7 +29,7 @@ Then, use `grunt server` to start up the web server. Grunt will recompile and re
 
 	Running "rendr_stitch:compile" (rendr_stitch) task
 	4 Apr 09:58:02 - [nodemon] v0.7.2
-	4 Apr 09:58:02 - [nodemon] watching: /Users/spike1/code/rendr-app-template
+	4 Apr 09:58:02 - [nodemon] watching: /Users/bob/code/polyrendr
 	4 Apr 09:58:02 - [nodemon] starting `node index.js`
 	4 Apr 09:58:02 - [nodemon] reading ignore list
 	File "public/mergedAssets.js" created.
@@ -50,16 +48,6 @@ Now, pull up the app in your web browser. It defaults to port `3030`.
 You can choose a different port by passing the `PORT` environment variable:
 
     $ PORT=80 grunt server
-
-### GitHub API rate limit
-
-GitHub [rate limits](http://developer.github.com/v3/#rate-limiting) unauthenticated requests to its public API to 60 requests per hour per IP. This should be enough for just playing with the sample app, but if you pull it down and start developing off it you may run up against the rate limit.
-
-If this happens to you, you can supply your GitHub creds for HTTP Basic Auth using the BASIC_AUTH environment variable. **Be very, very careful with this!** It means you will be typing your GitHub credentials in plain text, which will be saved to your Bash history and may be intercepted by other programs. If you do this, immediately change your password before and afterwards. This should only be necessary if you're developing on the app and need to keep refreshing the page.
-
-	$ BASIC_AUTH=githubusername:githubpassword grunt server
-
-**You've been warned.** Your best bet may be to alter the project to read from your favorite RESTful API.
 
 ## Getting Started With Rendr
 
@@ -367,8 +355,9 @@ Now, if we click from the list of users on `users#index`, you'll see the page ge
 So far, Rendr just supports Handlebars templates, but it should be possible to make this interchangeable. For now, place your templates in `app/templates` with a name that matches the underscorized view's identifier and file extension of `.hbs`.  So, the view with an identifier of `HomeIndexView` will look for a template at `app/templates/home_index_view.hbs`.
 
 
-## Interacting with a RESTful API
+## Interacting with a RESTful-ish API
 
+This example fetches data from Polyvore using the JSON output parameter and does a small amount or normalization via Backbone's `parse()` method.
 
 ## Assets
 
