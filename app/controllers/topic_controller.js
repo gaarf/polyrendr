@@ -5,8 +5,8 @@ module.exports = {
   index: function(params, callback) {
     var spec = {
       collection: {
-      	collection: 'Collages',
-      	params: _.defaults(params, { topic:false })
+      	collection: params.topic ? 'SplashTopic' : 'PopularFashion',
+      	params: params
       }
     };
     this.app.fetch(spec, callback);

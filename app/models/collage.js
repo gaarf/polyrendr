@@ -5,8 +5,7 @@ module.exports = Base.extend({
 , url: '/cgi/set?.out=json&id=:id'
 , idAttribute: 'id'
 
-, parse: function(res) {
-    return res.collection || res;
-  }
+, jsonKey: 'collection'
+
 });
 module.exports.id = 'Collage';

@@ -1,9 +1,9 @@
 var BaseView = require('../base_view');
 
 module.exports = BaseView.extend({
-  className: 'dry_collage_view',
+  className: 'dry_collage_view'
 
-  getTemplateData: function() {
+, getTemplateData: function() {
   	var m = this.options.model || {};
   	if(m.toJSON) {
   		m = m.toJSON();
@@ -12,11 +12,11 @@ module.exports = BaseView.extend({
   		m.imgurl = m.imgurls[0];
   	}
   	return m;
-  },
+  }
 
-  events: {
+, events: {
     'click .js-like': function(e){
-      e.preventDefault();
+      e.stopPropagation(); // in case a parent view also listens for click .js-like
       this.model.set('liked', !this.model.get("liked"));
       this.render();
     }

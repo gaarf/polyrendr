@@ -1,9 +1,16 @@
 <h1>{{title}}</h1>
 
-<ul class="unstyled inline">
+<ul class="collages unstyled inline">
 {{#each models}}
   <li>
     {{view "dry/collage" model=this model_name='Collage'}}
   </li>
 {{/each}}
 </ul>
+
+<p class="pull-right">
+	<a class="btn js-more">
+		<i class="icon-plus"></i>
+		Load more
+	</a>
+</p>
