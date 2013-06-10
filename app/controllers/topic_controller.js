@@ -9,7 +9,12 @@ module.exports = {
       	params: params
       }
     };
-    this.app.fetch(spec, callback);
+    this.app.fetch(spec, function(err, res){
+    	if(params.topic) {
+	    	res.collection.params.topic = params.topic; // topic is missing sometimes, why?
+    	}
+    	callback(err, res);
+    });
   }
 
 };

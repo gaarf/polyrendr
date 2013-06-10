@@ -3,7 +3,10 @@ var _ = require('underscore')
 
 module.exports = RendrBase.extend({
 
-  _page: 1
+  initialize: function(models, options) {
+    RendrBase.prototype.initialize.call(this, models, options);
+    _.defaults(this.meta, { nextpage: 2 });
+  }
 
 , defaultParams: {
     '.out': 'json'
@@ -28,26 +31,29 @@ module.exports = RendrBase.extend({
 
 , fetchMore: function(e){
 
-    this._page++;
-
     var lenBefore = this.length
-      , paramsBefore = this.options.params;
-
-      console.log(paramsBefore);
+      , app = this.app;
 
     this.fetch({
         update: true
       , remove: false
       , data: {
-          page: this._page
+          page: this.meta.nextpage++
+        , topic: this.params.topic
         }
       , success: _.bind(function() {
           if(this.length <= lenBefore) {
-            this.trigger('lastpage', this._page);
+            this.trigger('lastpage', this.meta.nextpage-1);
+            this.meta.nextpage = 0;
           }
 
+          // ensure hydrated models have a ref to app
+          this.each(function(model) { model.app = app; });
+
+          // forget the page param before storing, so that we when we navigate
+          // back, fetcher will give us the collection with updated contents
+          delete this.params.page;
           this.store();
-          this.app.fetcher.collectionStore.set(this, paramsBefore);
 
         }, this)
     });

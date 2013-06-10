@@ -12,10 +12,11 @@ module.exports = BaseView.extend({
 
 , postRender: function() {
     var $ul = this.$('ul.collages');
+
     this.collection.on('add', function(set) {
       var View = BaseView.getView('dry/collage')
         , $li = $('<li>');
-      (new View({model:set}))
+      (new View({ model: set }))
         .render()
         .$el
           .appendTo($li);
@@ -26,6 +27,7 @@ module.exports = BaseView.extend({
       alert('there are no more pages!');
       this.$('.js-more').hide();
     }, this);
+
   }
 
 , events: {
