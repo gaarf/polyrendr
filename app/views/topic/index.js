@@ -24,10 +24,16 @@ module.exports = BaseView.extend({
     }, this);
 
     this.collection.on('lastpage', function() {
-      alert('there are no more pages!');
+      console.log('there are no more pages!');
       this.$('.js-more').hide();
     }, this);
 
+    this.on('window:scroll', function($win) {
+      var atBottom = $win.scrollTop() + $win.height() == $(document).height();
+      if(atBottom && !this.app.get('loading') && this.collection.meta.nextpage) {
+        this.collection.fetchMore();
+      }
+    }, this);
   }
 
 , events: {

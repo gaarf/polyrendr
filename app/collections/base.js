@@ -34,6 +34,8 @@ module.exports = RendrBase.extend({
     var lenBefore = this.length
       , app = this.app;
 
+    app.set({loading: true});
+
     this.fetch({
         update: true
       , remove: false
@@ -56,6 +58,11 @@ module.exports = RendrBase.extend({
           this.store();
 
         }, this)
+
+      , complete: function() {
+          app.set({loading: false});
+        }
+
     });
 
   }

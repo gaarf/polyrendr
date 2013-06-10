@@ -9,13 +9,15 @@ module.exports = BaseAppView.extend({
     }, this);
 
     var router = this.app.router
-      , scrollPositions = {};
+      , scrollPositions = {}
+      , $win = $(window);
 
-    $(window).on('scroll', function() {
-      scrollPositions[router.currentFragment] = window.scrollY;
+    $win.on('scroll', function() {
+      scrollPositions[router.currentFragment] = $win.scrollTop();
+      router.currentView.trigger('window:scroll', $win);
     });
     router.on('action:end', function() {
-      window.scrollTo(0, scrollPositions[router.currentFragment] || 0);
+      $win.scrollTop(scrollPositions[router.currentFragment] || 0);
     });
   }
 
