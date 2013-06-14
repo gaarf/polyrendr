@@ -6,7 +6,9 @@ module.exports = RendrView.extend({
 
   getTemplateData: function() {
     var data = RendrView.prototype.getTemplateData.call(this);
-    data._session = this.app.get('session') || false;
+    if(this.app) {
+	    data._session = this.app.get('session') || false;
+    }
     return data;
   }
 

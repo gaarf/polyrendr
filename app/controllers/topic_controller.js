@@ -15,6 +15,7 @@ module.exports = {
     	}
     	callback(err, 'topic/index', res);
     });
+
   }
 
 };

@@ -15,11 +15,13 @@ module.exports = BaseView.extend({
   }
 
 , events: {
-    'click .js-like': function(e){
+
+    'click .js-like': function(e) {
       e.stopPropagation(); // in case a parent view also listens for click .js-like
       this.model.set('liked', !this.model.get("liked"));
       this.render();
     }
+
   }
 });
 module.exports.id = 'dry/collage';
