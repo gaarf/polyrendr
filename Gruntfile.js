@@ -14,6 +14,10 @@ module.exports = function(grunt) {
         cmd: 'node ./node_modules/nodemon/nodemon.js index.js',
         bg: true
       },
+      runTests: {
+        cmd: 'npm test',
+        bg: false
+      },
       runRedis: {
         cmd: 'redis-server /usr/local/etc/redis.conf',
         bg: false
@@ -118,6 +122,9 @@ module.exports = function(grunt) {
 
   // Run REDIS
   grunt.registerTask('redis', ['bgShell:runRedis']);
+
+  // Run the test suite
+  grunt.registerTask('test', ['bgShell:runTests']);
 
   // Default task(s).
   grunt.registerTask('default', ['compile']);
