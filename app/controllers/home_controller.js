@@ -9,11 +9,13 @@ module.exports = {
   	}
     else {
 
-      console.log('hello client!');      
+      console.log('hello client!');
     }
 
   	console.log('!!!!!!! HELLO WORLD !!!!!!!!!');
 
-    callback();
+
+    callback(null, 'home/index');
+
   }
 };
