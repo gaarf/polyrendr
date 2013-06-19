@@ -29,8 +29,9 @@ module.exports = BaseView.extend({
     }, this);
 
     this.on('window:scroll', function($win) {
-      var atBottom = $win.scrollTop() + $win.height() == $(document).height();
+      var atBottom = $win.scrollTop() + $win.height() + 400 > $(document).height();
       if(atBottom && !this.app.get('loading') && this.collection.meta.nextpage) {
+        console.log('fetching a page...');
         this.collection.fetchMore();
       }
     }, this);
