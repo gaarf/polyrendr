@@ -5,9 +5,9 @@
 <p>Check out <a href="/topic">Popular Fashion</a>.</p>
 
 
-{{#if _session}}
-	<hr>
-	<p>Your session was created on {{_session.created}}.</p>
-	<p>Your last request for the home was on {{_session.homeload}}.</p>
-{{/if}}
+<hr>
 
+{{#if _session}}
+	<p>{{_session.created}} <small>Your session was created</small></p>
+	<p>{{_session.homeload}} <small>Your last request for the home</small></p>
+{{/if}}
