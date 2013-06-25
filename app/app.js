@@ -1,4 +1,9 @@
-var BaseApp = require('rendr/shared/app');
+var BaseApp = require('rendr/shared/app'),
+    $scriptjs = function() {};
+
+if(typeof document !== "undefined") {
+  $scriptjs = require('scriptjs');
+}
 
 module.exports = BaseApp.extend({
   // @client
@@ -9,6 +14,8 @@ module.exports = BaseApp.extend({
 
     // Call 'super'.
     BaseApp.prototype.start.call(this);
-  }
+  },
 
+  // add our client-side script loading library
+  $script: $scriptjs
 });

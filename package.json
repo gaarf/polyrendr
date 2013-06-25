@@ -1,6 +1,6 @@
 {
-  "name": "rendr-app-template",
-  "version": "0.0.17-gaarf",
+  "name": "polyrendr-app-template",
+  "version": "0.0.1-stripe",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "async": "~0.1.22",
     "request": "~2.16",
 
+    "scriptjs": "*",
     "connect-redis": "*",
 
     "rendr": "0.4.7-rc.1",

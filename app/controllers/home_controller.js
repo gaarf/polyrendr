@@ -22,7 +22,7 @@ module.exports = {
 
 , stripe: function(params, callback) {
 
-    sayHello(this.app);
+    // sayHello(this.app);
 
     callback();
   }
